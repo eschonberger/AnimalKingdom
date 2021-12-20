@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+//recibirá un listado de imágenes (las fotos de los perros).
 class DogAdapter (val images:List<String>):RecyclerView.Adapter<DogViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {

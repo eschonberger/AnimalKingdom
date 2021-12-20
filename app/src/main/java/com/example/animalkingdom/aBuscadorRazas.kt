@@ -53,9 +53,11 @@ class aBuscadorRazas : AppCompatActivity(), SearchView.OnQueryTextListener,
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit().create(APIService::class.java).getDogsByBreeds("$query/images")
             val puppies = call.body()
+
+            //salgo de la corrutina para que aparezcan las imagenes o el TOAST
             runOnUiThread {
                 if(call.isSuccessful){
-                    //Operador ELVIS si es nulo tenemos una lista vacia
+                    //Operador ELVIS - si es nulo actuara y obtendremos una lista vacia - NULL SAFETY
                     val images = puppies?.images ?: emptyList()
                     dogImages.clear()
                     dogImages.addAll(images)
@@ -75,16 +77,18 @@ class aBuscadorRazas : AppCompatActivity(), SearchView.OnQueryTextListener,
         Toast.makeText(this,"Ha ocurrido un Error",Toast.LENGTH_SHORT).show()
     }
 
-    //Cuando ponemos buscar se invoca el siguiente metodo
+    //LISTENERS DEL SEARCHVIEW
+    //Cuando presiona enter, o la lupa en el buscar - envio a retrofir para que realize la peticion a internet
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (!query.isNullOrEmpty()){
 
+            //pasaje a minusculas - API Protection
             searchByName(query.toLowerCase())
         }
         return true
     }
 
-    //Cada vez que se escribe una letra
+    //Cada vez que se escribe una letra - NO ES RELEVANTE dado que solo necesitamos que nos avise cuando el usuario haya terminado de escribir
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
     }

@@ -102,5 +102,14 @@ class Panel : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Programacion del Boton de la Temperatura
+        var botonTemp = findViewById<Button>(R.id.btntemp)
+        botonTemp.setOnClickListener {
+            //Para pasar de la  pantalla(Panel) hacia la de la Temperatura
+            val intent = Intent(this,Temperatura:: class.java)
+
+            //inicia  la pantalla -Perro-
+            startActivity(intent)
+            }
     }
 }

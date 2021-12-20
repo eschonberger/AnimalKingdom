@@ -33,18 +33,22 @@ fun ingresar(Usuario: EditText, Clave: EditText) {
     var convierteUsuario = Usuario.text.toString()
     var convierteClave = Clave.text.toString()
 
+
+    var usuario = Usuarios(convierteUsuario,convierteClave)
+
+
     //Validacion admin
-    if (convierteUsuario=="zoo" && convierteClave=="zoo"){
+    if (usuario.nombreUsuario=="zoo" && usuario.clave=="123456"){
 
 
     //Instancio objeto tipo data class
-        var pasedatos = dUsuarios(convierteUsuario,convierteClave)
+        var pasedatos = dUsuarios(usuario.nombreUsuario,usuario.clave)
 
-        //Para pasar de la  pantalla(MainActivity) hacia la otra llamada Animales
+        //Para pasar de la  pantalla(MainActivity) hacia la otra llamada Panel
         val intent = Intent(this,Panel:: class.java)
 
 
-        //Envio el objeto pasedatos,  bajo el id prueba
+        //Envio el objeto pasedatos,  bajo el id usuario
         intent.putExtra("usuario",pasedatos)
 
 

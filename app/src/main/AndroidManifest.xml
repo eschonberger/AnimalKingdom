@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimalKingdom">
         <activity
+            android:name=".Temperatura"
+            android:exported="false" />
+        <activity
             android:name=".aBuscadorRazas"
             android:exported="false" />
         <activity
